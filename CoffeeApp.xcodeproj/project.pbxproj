@@ -11,6 +11,14 @@
 		9ECE63C427C01D4400BD829C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE63C327C01D4400BD829C /* ContentView.swift */; };
 		9ECE63C627C01D4500BD829C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECE63C527C01D4500BD829C /* Assets.xcassets */; };
 		9ECE63C927C01D4500BD829C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECE63C827C01D4500BD829C /* Preview Assets.xcassets */; };
+		9ECE63D227C01DA700BD829C /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE63D027C01DA700BD829C /* FirebaseConstant.swift */; };
+		9ECE63D327C01DA700BD829C /* FirebaseReferance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE63D127C01DA700BD829C /* FirebaseReferance.swift */; };
+		9ECE63D527C01DCF00BD829C /* CoffeeHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE63D427C01DCF00BD829C /* CoffeeHomePageView.swift */; };
+		9ECE63D827C01E6E00BD829C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9ECE63D727C01E6E00BD829C /* FirebaseFirestore */; };
+		9ECE63DA27C01EC200BD829C /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE63D927C01EC200BD829C /* Drink.swift */; };
+		9ECE63DC27C021FA00BD829C /* DrinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE63DB27C021FA00BD829C /* DrinkItem.swift */; };
+		9ECE63DF27C0309F00BD829C /* FirebaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE63DE27C0309F00BD829C /* FirebaseListener.swift */; };
+		9ECE63E127C0344100BD829C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ECE63E027C0344100BD829C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,13 @@
 		9ECE63C327C01D4400BD829C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9ECE63C527C01D4500BD829C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ECE63C827C01D4500BD829C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9ECE63D027C01DA700BD829C /* FirebaseConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
+		9ECE63D127C01DA700BD829C /* FirebaseReferance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseReferance.swift; sourceTree = "<group>"; };
+		9ECE63D427C01DCF00BD829C /* CoffeeHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeHomePageView.swift; sourceTree = "<group>"; };
+		9ECE63D927C01EC200BD829C /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		9ECE63DB27C021FA00BD829C /* DrinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkItem.swift; sourceTree = "<group>"; };
+		9ECE63DE27C0309F00BD829C /* FirebaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseListener.swift; sourceTree = "<group>"; };
+		9ECE63E027C0344100BD829C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECE63D827C01E6E00BD829C /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +67,16 @@
 		9ECE63C027C01D4400BD829C /* CoffeeApp */ = {
 			isa = PBXGroup;
 			children = (
+				9ECE63E027C0344100BD829C /* GoogleService-Info.plist */,
+				9ECE63DD27C0308C00BD829C /* Firebase Listener */,
+				9ECE63CF27C01D7000BD829C /* Firebase */,
 				9ECE63C127C01D4400BD829C /* CoffeeAppApp.swift */,
 				9ECE63C327C01D4400BD829C /* ContentView.swift */,
 				9ECE63C527C01D4500BD829C /* Assets.xcassets */,
 				9ECE63C727C01D4500BD829C /* Preview Content */,
+				9ECE63D427C01DCF00BD829C /* CoffeeHomePageView.swift */,
+				9ECE63D927C01EC200BD829C /* Drink.swift */,
+				9ECE63DB27C021FA00BD829C /* DrinkItem.swift */,
 			);
 			path = CoffeeApp;
 			sourceTree = "<group>";
@@ -65,6 +87,23 @@
 				9ECE63C827C01D4500BD829C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9ECE63CF27C01D7000BD829C /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				9ECE63D027C01DA700BD829C /* FirebaseConstant.swift */,
+				9ECE63D127C01DA700BD829C /* FirebaseReferance.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		9ECE63DD27C0308C00BD829C /* Firebase Listener */ = {
+			isa = PBXGroup;
+			children = (
+				9ECE63DE27C0309F00BD829C /* FirebaseListener.swift */,
+			);
+			path = "Firebase Listener";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +122,9 @@
 			dependencies = (
 			);
 			name = CoffeeApp;
+			packageProductDependencies = (
+				9ECE63D727C01E6E00BD829C /* FirebaseFirestore */,
+			);
 			productName = CoffeeApp;
 			productReference = 9ECE63BE27C01D4400BD829C /* CoffeeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 9ECE63B527C01D4400BD829C;
+			packageReferences = (
+				9ECE63D627C01E6E00BD829C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 9ECE63BF27C01D4400BD829C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ECE63C927C01D4500BD829C /* Preview Assets.xcassets in Resources */,
+				9ECE63E127C0344100BD829C /* GoogleService-Info.plist in Resources */,
 				9ECE63C627C01D4500BD829C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,7 +183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECE63DF27C0309F00BD829C /* FirebaseListener.swift in Sources */,
+				9ECE63D227C01DA700BD829C /* FirebaseConstant.swift in Sources */,
 				9ECE63C427C01D4400BD829C /* ContentView.swift in Sources */,
+				9ECE63D527C01DCF00BD829C /* CoffeeHomePageView.swift in Sources */,
+				9ECE63DC27C021FA00BD829C /* DrinkItem.swift in Sources */,
+				9ECE63D327C01DA700BD829C /* FirebaseReferance.swift in Sources */,
+				9ECE63DA27C01EC200BD829C /* Drink.swift in Sources */,
 				9ECE63C227C01D4400BD829C /* CoffeeAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +393,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9ECE63D627C01E6E00BD829C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9ECE63D727C01E6E00BD829C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9ECE63D627C01E6E00BD829C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9ECE63B627C01D4400BD829C /* Project object */;
 }
