@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CoffeeHomePageView: View {
     
-    @ObservedObject var drinkListener = DrinkListener() 
+    @ObservedObject var drinkListener = DrinkListener()
+    @State var showingBasket = false
     var categories: [String : [Drink]]{
         .init(grouping: drinkListener.drinks) {$0.category.rawValue}
     }
@@ -27,9 +28,17 @@ struct CoffeeHomePageView: View {
                     Text("Log Out")
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Text("Profile")
+                    
+                    Button {
+                        showingBasket.toggle()
+                    } label: {
+                        Image("basket")
+                    }
+                    
                 }
             }
+        }.sheet(isPresented: $showingBasket, onDismiss: nil) {
+            OrderBasketView()
         }
     }
 }
@@ -49,9 +58,11 @@ struct CoffeeRow: View{
             ScrollView(.horizontal,showsIndicators: false){
                 HStack{
                     ForEach(drink){ drink in
-                        DrinkItem(drink: drink)
-                            .frame(width:320)
-                            .padding(.trailing,30)
+                        NavigationLink(destination: DrinkDetail(drink: drink)){
+                            DrinkItem(drink: drink)
+                                .frame(width:320)
+                                .padding(.trailing,30)
+                        }
                     }
                 }
             }
