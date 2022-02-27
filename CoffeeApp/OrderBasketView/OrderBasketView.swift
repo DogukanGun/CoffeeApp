@@ -26,7 +26,7 @@ struct OrderBasketView: View {
                 }
                 
                 Section{
-                    NavigationLink(destination: CoffeeHomePageView()){
+                    NavigationLink(destination: CheckoutView()){
                         
                         Text("Place Order")
                     }

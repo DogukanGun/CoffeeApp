@@ -10,6 +10,7 @@ import SwiftUI
 struct DrinkDetail: View {
     var drink:Drink
     @State private var showingAlert = false
+    @State private var showSignIn = false
     var body: some View {
         ScrollView(.vertical){
             ZStack(alignment: .bottom){
@@ -38,7 +39,7 @@ struct DrinkDetail: View {
             
             HStack{
                 Spacer()
-                OrderButton(showingAlert:$showingAlert, drink: drink, buttonText: "Add Basket")
+                OrderButton(showingAlert:$showingAlert, showSignIn: $showSignIn, drink: drink, buttonText: "Add Basket")
                 Spacer()
             }
         }
@@ -49,21 +50,33 @@ struct DrinkDetail: View {
             } label: {
                 Text("Okay")
             }
-
+        }
+        .sheet(isPresented: $showSignIn) {
+            if FUser.currentUser() != nil{
+                FinishRegistirationView(dismissSheet: $showSignIn)
+            }else{
+                LoginView()
+            }
         }
     }
 }
 
 struct OrderButton: View{
     @Binding var showingAlert: Bool
+    @Binding var showSignIn: Bool
     @ObservedObject var basketListener = OrderBasketListener()
     var drink:Drink
     var buttonText: String
     var body: some View{
         HStack{
             Button {
-                self.showingAlert.toggle()
-                addBasket()
+                if FUser.currentUser() != nil && FUser.currentUser()?.onBoard == true{
+                    self.showingAlert.toggle()
+                    addBasket()
+                }else {
+                    showingAlert.toggle()
+                }
+                
             } label: {
                 Text(buttonText)
             }
@@ -83,7 +96,7 @@ struct OrderButton: View{
             orderBasket = basketListener.orderBasket
         }else{
             orderBasket = OrderBasket()
-            orderBasket.ownerId = "123"
+            orderBasket.ownerId = FUser.currentId()
             orderBasket.id = UUID().uuidString
             
         }
@@ -95,11 +108,9 @@ struct OrderButton: View{
 
 
 
-struct OrderButton_Previews: PreviewProvider {
-    @State static var value = false
-
+struct OrderButton_Previews: PreviewProvider { 
     static var previews: some View {
-        OrderButton(showingAlert:$value, drink: drinkData.first!, buttonText: "Add Basket")
+        OrderButton(showingAlert:.constant(false), showSignIn: .constant(false), drink: drinkData.first!, buttonText: "Add Basket")
     }
 }
 

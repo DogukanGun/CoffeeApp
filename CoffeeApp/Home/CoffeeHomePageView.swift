@@ -11,6 +11,8 @@ struct CoffeeHomePageView: View {
     
     @ObservedObject var drinkListener = DrinkListener()
     @State var showingBasket = false
+    @State var setError = false
+
     var categories: [String : [Drink]]{
         .init(grouping: drinkListener.drinks) {$0.category.rawValue}
     }
@@ -25,7 +27,22 @@ struct CoffeeHomePageView: View {
             .navigationTitle("Coffee Shop")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Log Out")
+                    Button {
+                        FUser.logoutCurrentUser { error in
+                            if error != nil {
+                              print(error)
+                            }
+                        }
+                    } label: {
+                        Text("Log Out")
+                    }.alert("Oppps",isPresented: $setError) {
+                        Button {
+                            setError.toggle()
+                        } label: {
+                            Text("Okay")
+                        }
+                    }
+
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     
@@ -38,7 +55,13 @@ struct CoffeeHomePageView: View {
                 }
             }
         }.sheet(isPresented: $showingBasket, onDismiss: nil) {
-            OrderBasketView()
+            if FUser.currentUser() != nil && FUser.currentUser()?.onBoard == true{
+                OrderBasketView()
+            }else if FUser.currentUser() != nil{
+                FinishRegistirationView(dismissSheet: $showingBasket)
+            }else{
+                LoginView()
+            }
         }
     }
 }
